@@ -18,7 +18,7 @@ public class SudokuCheckerTest {
         board[1][0] = 2;
         board[2][0] = 2;
         assertEquals(false,
-                sudokuChecker.checkLines(board,0,0));
+                sudokuChecker.hasDuplicatesInLines(board,0,0));
     }
 
     @Test
@@ -31,7 +31,7 @@ public class SudokuCheckerTest {
         board[2][1] = 1;       //   002
         board[2][2] = 2;
 
-        assertEquals(false,sudokuChecker.checkLines(board,2,0));
+        assertEquals(false,sudokuChecker.hasDuplicatesInLines(board,2,0));
     }
 
 }

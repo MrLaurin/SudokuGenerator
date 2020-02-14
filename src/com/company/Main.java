@@ -10,7 +10,11 @@ public class Main {
 
 
         SudokuGenerator sGen = new SudokuGenerator();
-        int[][] board = sGen.generateField();
+        SudokuChecker sCheck = new SudokuChecker();
+        int[][] board = sGen.generateSudoku();
+
+
+
         sGen.printField(board);
     }
 }
