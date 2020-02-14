@@ -119,7 +119,7 @@ public class SudokuCheckerTest {
         board[6][8] = 1;
         board[7][8] = 7;
         board[8][8] = 9;
-        assertEquals(true,sudokuChecker.checkLines(board,0,0));
+        assertEquals(true,sudokuChecker.hasDuplicatesInLines(board,0,0));
     }
 
 
