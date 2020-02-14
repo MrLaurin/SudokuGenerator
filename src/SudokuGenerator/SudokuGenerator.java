@@ -36,12 +36,24 @@ public class SudokuGenerator {
 
     public void printField(int[][] board){
         String output;
-        for(int i = 0 ; i < board.length ; i ++){
+        for(int y = 0 ; y < board.length ; y ++){
             output = "";
-            for(int j = 0 ; j < board[i].length ; j ++){
-                output += "  " + board[j][i];
+            for(int x = 0; x < board[y].length ; x ++){
+                if(x % 3 == 0 && x <= 9){
+                    output += "|";
+                }
+                output += " " + board[x][y] + " ";
+                if(x == 8){
+                    output += "|";
+                }
+
+            }
+            if(y % 3 == 0 && y <= 9) {
+                System.out.println("+---------+---------+---------+");
             }
             System.out.println(output);
+
         }
+        System.out.println("+---------+---------+---------+");
     }
 }
