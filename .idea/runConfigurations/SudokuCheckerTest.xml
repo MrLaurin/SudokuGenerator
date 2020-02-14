@@ -8,7 +8,7 @@
       </pattern>
     </extension>
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-    <option name="ALTERNATIVE_JRE_PATH" value="11.0.5" />
+    <option name="ALTERNATIVE_JRE_PATH" value="13 (2)" />
     <option name="PACKAGE_NAME" value="SudokuGenerator" />
     <option name="MAIN_CLASS_NAME" value="SudokuGenerator.SudokuCheckerTest" />
     <option name="METHOD_NAME" value="" />
