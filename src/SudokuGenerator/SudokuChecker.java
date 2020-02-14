@@ -5,16 +5,6 @@ import static java.lang.Math.ceil;
 public class SudokuChecker {
 
 
-    public boolean checkWholeLine(int[][] board, int y){//Checks a whole line using the chekcLines-Method
-        for(int x = 0 ; x < board.length ; x ++){
-            if (checkLines(board, x, y) == false){
-                return false;
-            }
-        }
-        return true;
-    }
-
-
     public boolean checkLines(int[][] board, int x, int y) {
         //Checkt alle Zahlen entlang der x-Achse
         boolean[] checklist = new boolean[board.length];    //Eine Array die immer an der Position einer bestimmten Zahl auf true gesetzt wird
@@ -66,4 +56,16 @@ public class SudokuChecker {
         coords[1] = (y/3)*3;
         return coords;
     }
+
+    public boolean isBoardFull(int[][] board){
+        for(int y = 0 ; y < 9 ; y ++){
+            for(int x = 0 ; x < 9 ; x ++){
+                if(board[x][y] < 0 && board[x][y] > 8){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 }
