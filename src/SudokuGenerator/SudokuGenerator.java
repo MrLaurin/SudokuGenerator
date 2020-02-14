@@ -12,26 +12,33 @@ public class SudokuGenerator {
     }
 
 
-    public int[][] generateField(){    //Generiert das Feld, indem es jeweils eine Box zufällig erstellt und dannach überprüft, ob das Feld richtig ist
+    public int[][] generateSudoku(){    //Generiert das Feld, indem es jeweils eine Box zufällig erstellt und dannach überprüft, ob das Feld richtig ist
         int[][] board = new int[9][9];                      //Generates a field full of 9s because 9s and later replaces the 9s with Sudoku numbers
-        for(int i = 0 ; i < board.length ; i ++){
-            for(int j = 0 ; j < board[i].length ; j ++){
-                board[j][i] = 9;
-            }
-        }
 
 
+        fillBoardRek(board, 0, 0);
 
-       return board;
+        return board;
     }
 
-    private int[][] addOneToAll(int[][] board){     //Adds one to every single number on the board
-        for(int y = 0 ; y < board[0].length ; y ++){
-            for(int x = 0 ; x < board.length ; x ++){
-                board[x][y]++;
+
+    private boolean fillBoardRek(int[][] board, int x, int y){
+        if(x >= 9){
+            x = 0;
+            y++;
+        }else if(y >= 9){   //If is at end of field
+            return true;
+        }
+
+        for(int i = 1 ; i < 10 ; i ++) {
+            board[x][y] = i;
+            if (sudokuChecker.hasDuplicatesInLines(board, x, y) == false) {
+                if(fillBoardRek(board, x+1, y) == true){
+                    break;
+                }
             }
         }
-        return board;
+        return false;
     }
 
     public void printField(int[][] board){
@@ -56,4 +63,5 @@ public class SudokuGenerator {
         }
         System.out.println("+---------+---------+---------+");
     }
+
 }

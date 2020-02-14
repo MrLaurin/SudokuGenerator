@@ -5,40 +5,30 @@ import static java.lang.Math.ceil;
 public class SudokuChecker {
 
 
-    public boolean checkWholeLine(int[][] board, int y){//Checks a whole line using the chekcLines-Method
-        for(int x = 0 ; x < board.length ; x ++){
-            if (checkLines(board, x, y) == false){
-                return false;
-            }
-        }
-        return true;
-    }
-
-
-    public boolean checkLines(int[][] board, int x, int y) {
+    public boolean hasDuplicatesInLines(int[][] board, int x, int y) {
         //Checkt alle Zahlen entlang der x-Achse
-        boolean[] checklist = new boolean[board.length];    //Eine Array die immer an der Position einer bestimmten Zahl auf true gesetzt wird
+        boolean[] checklist = new boolean[board.length+1];    //Eine Array die immer an der Position einer bestimmten Zahl auf true gesetzt wird
         for(int i = 0 ; i < board.length ; i ++){
-            if(board[i][y] > 8){ //Alle Zahlen über 8 werden ignoriert, da dies das generieren eines Feldes erleichtert
+            if(board[i][y] == 0){   //Ignores zeros on the board
 
             }else if(checklist[board[i][y]] == true){
-                return false;
+                return true;
             }else{
                 checklist[board[i][y]] = true;
             }
         }
         //Checkt alle Zahlen entlang der y-Achse
-        checklist = new boolean[board[x].length];
+        checklist = new boolean[board[x].length+1];
         for(int i = 0 ; i < board[x].length ; i ++){
-            if(board[x][i] > 8){ //Alle Zahlen über 8 werden ignoriert, da dies das generieren eines Feldes erleichtert
+            if(board[x][i] == 0){   //Ignores zeros on the board
 
             }else if(checklist[board[x][i]] == true){
-                return false;
+                return true;
             }else{
                 checklist[board[x][i]] = true;
             }
         }
-        return true;
+        return false;
     }
 
     public boolean checkBox(int[][] board, int x, int y) {  //Unnötigste Methode wo gibt
@@ -66,4 +56,16 @@ public class SudokuChecker {
         coords[1] = (y/3)*3;
         return coords;
     }
+
+    public boolean isBoardFull(int[][] board){
+        for(int y = 0 ; y < 9 ; y ++){
+            for(int x = 0 ; x < 9 ; x ++){
+                if(board[x][y] < 0 && board[x][y] > 8){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 }
